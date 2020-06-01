@@ -2,7 +2,7 @@
 
 -import(string, [len/1, concat/2, chr/2, substr/3, str/2, to_lower/1, to_upper/2]).
 
--export([hello_world/0, add/2, atom_stuff/0, main/0, mains/0]).
+-export([hello_world/0, add/2, atom_stuff/0, main/0, mains/0, mainss/0]).
 
 hello_world() -> 
     io:fwrite("Hello World\n").
@@ -33,3 +33,11 @@ add(A, B) ->
 
 atom_stuff() ->
     'An Atom'.
+
+mainss() -> 
+    lc_stuff().
+
+lc_stuff() -> 
+    List1 = [1, 2, 3],
+    List2 = [2 * N || N <- List1],
+    List2.
