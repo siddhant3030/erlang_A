@@ -1,3 +1,3 @@
-defmodule VideoChat.CallView do
-  use VideoChat.Web, :view
+defmodule VideoChatWeb.CallView do
+  use VideoChatWeb, :view
 end
