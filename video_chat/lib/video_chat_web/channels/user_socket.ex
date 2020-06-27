@@ -2,6 +2,7 @@ defmodule VideoChatWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
+  channel "call", VideoChatWeb.CallChannel
   # channel "room:*", VideoChatWeb.RoomChannel
 
   # Socket params are passed from the client and can
