@@ -6,7 +6,7 @@ defmodule Streamer.Binance do
     WebSockex.start_link("#{@stream_endpoint}#{symbol}@trade", __MODULE__, state)
   end
 
-  def handle_frame({type, msg}, state) do
+  def handle_frame({_type, msg}, state) do
     case Jason.decode(msg) do
       {:ok, event} -> handle_event(event, state)
       {:error, _} -> throw("Unable to parse msg #{msg}")
@@ -15,7 +15,7 @@ defmodule Streamer.Binance do
     {:ok, state}
   end
 
-  def handle_event(%{"e" => "trade"} = event, state) do
+  def handle_event(%{"e" => "trade"} = event, _state) do
     trade_event = %Streamer.Binance.TradeEvent{
       :event_type => event["e"],
       :event_time => event["E"],
