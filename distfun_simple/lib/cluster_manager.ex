@@ -29,4 +29,17 @@ defmodule DistfunSimple.ClusterManager do
     all_nodes = [state.me] ++ state.other_nodes
     {:reply, all_nodes, state}
   end
+
+  def handle_info({:nodeup, node}, state) do
+    sorted_other_nodes = Enum.sort([node | state.other_nodes])
+    new_state = %{state | other_nodes: sorted_other_nodes}
+
+    {:noreply, new_state}
+  end
+
+  def handle_info({:nodedown, node}, state) do
+    new_state = %{state | other_nodes: state.other_nodes -- [node]}
+
+    {:noreply, new_state}
+  end
 end
