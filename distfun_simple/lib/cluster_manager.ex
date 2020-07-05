@@ -1,6 +1,27 @@
 defmodule DistfunSimple.ClusterManager do
   use GenServer
 
+  defmodule State do
+    defstruct me: nil, other_nodes: []
+
+    def new(me) do
+      %State{me: me, other_nodes: []}
+    end
+
+    def all(%State{me: me, other_nodes: other_nodes}) do
+      [me | other_nodes]
+    end
+
+    def add_node(%State{} = state, node) do
+      sorted_other_nodes = Enum.sort([node | state.other_nodes])
+      %{state | other_nodes: sorted_other_nodes}
+    end
+
+    def remove_node(%State{} = state, node) do
+      %{state | other_nodes: state.other_nodes -- [node]}
+    end
+  end
+
   def start_link(_) do
     GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
   end
@@ -9,12 +30,7 @@ defmodule DistfunSimple.ClusterManager do
     # 1.
     :net_kernel.monitor_nodes(true)
 
-    state = %{
-      me: node(),
-      other_nodes: []
-    }
-
-    {:ok, state}
+    {:ok, State.new(node())}
   end
 
   # ...
@@ -26,19 +42,17 @@ defmodule DistfunSimple.ClusterManager do
   # ...
 
   def handle_call(:get_all_nodes, _from, state) do
-    all_nodes = [state.me] ++ state.other_nodes
-    {:reply, all_nodes, state}
+    {:reply, State.all(state), state}
   end
 
   def handle_info({:nodeup, node}, state) do
-    sorted_other_nodes = Enum.sort([node | state.other_nodes])
-    new_state = %{state | other_nodes: sorted_other_nodes}
+    new_state = State.add_node(state, node)
 
     {:noreply, new_state}
   end
 
   def handle_info({:nodedown, node}, state) do
-    new_state = %{state | other_nodes: state.other_nodes -- [node]}
+    new_state = State.remove_node(state, node)
 
     {:noreply, new_state}
   end
