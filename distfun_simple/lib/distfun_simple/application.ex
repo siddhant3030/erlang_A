@@ -15,6 +15,7 @@ defmodule DistfunSimple.Application do
       DistfunSimpleWeb.Endpoint
       # Start a worker by calling: DistfunSimple.Worker.start_link(arg)
       # {DistfunSimple.Worker, arg}
+      DistfunSimple.ClusterManager
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
