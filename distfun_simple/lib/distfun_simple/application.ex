@@ -12,7 +12,7 @@ defmodule DistfunSimple.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: DistfunSimple.PubSub},
       # Start the Endpoint (http/https)
-      DistfunSimpleWeb.Endpoint
+      DistfunSimpleWeb.Endpoint,
       # Start a worker by calling: DistfunSimple.Worker.start_link(arg)
       # {DistfunSimple.Worker, arg}
       DistfunSimple.ClusterManager

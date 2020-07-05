@@ -2,10 +2,10 @@ defmodule DistfunSimple.ClusterManager do
   use GenServer
 
   defmodule State do
-    defstruct me: nil, other_nodes: []
+    defstruct me: nil, other_nodes: [], listeners: nil
 
     def new(me) do
-      %State{me: me, other_nodes: []}
+      %State{me: me, other_nodes: [], listeners: MapSet.new()}
     end
 
     def all(%State{me: me, other_nodes: other_nodes}) do
@@ -19,6 +19,10 @@ defmodule DistfunSimple.ClusterManager do
 
     def remove_node(%State{} = state, node) do
       %{state | other_nodes: state.other_nodes -- [node]}
+    end
+
+    def register_listener(%State{} = state, listener) do
+      %{state | listeners: MapSet.put(state.listeners, listener)}
     end
   end
 
@@ -55,5 +59,19 @@ defmodule DistfunSimple.ClusterManager do
     new_state = State.remove_node(state, node)
 
     {:noreply, new_state}
+  end
+
+   def get_all_nodes_and_subscribe() do
+    GenServer.call(__MODULE__, {:get_all_nodes_and_subscribe, self()})
+  end
+
+  # ...
+
+  def handle_call({:get_all_nodes_and_subscribe, listener}, _from, %State{} = state) do
+    new_state = State.register_listener(state, listener)
+
+    Process.monitor(listener) # Monitor the registered process
+
+    {:reply, State.all(state), new_state}
   end
 end
