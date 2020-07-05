@@ -24,6 +24,10 @@ defmodule DistfunSimple.ClusterManager do
     def register_listener(%State{} = state, listener) do
       %{state | listeners: MapSet.put(state.listeners, listener)}
     end
+
+    def deregister_listener(%State{} = state, listener) do
+      %{state | listeners: MapSet.delete(state.listeners, listener)}
+    end
   end
 
   def start_link(_) do
@@ -61,7 +65,7 @@ defmodule DistfunSimple.ClusterManager do
     {:noreply, new_state}
   end
 
-   def get_all_nodes_and_subscribe() do
+  def get_all_nodes_and_subscribe() do
     GenServer.call(__MODULE__, {:get_all_nodes_and_subscribe, self()})
   end
 
@@ -70,8 +74,15 @@ defmodule DistfunSimple.ClusterManager do
   def handle_call({:get_all_nodes_and_subscribe, listener}, _from, %State{} = state) do
     new_state = State.register_listener(state, listener)
 
-    Process.monitor(listener) # Monitor the registered process
+    # Monitor the registered process
+    Process.monitor(listener)
 
     {:reply, State.all(state), new_state}
+  end
+
+  def handle_info({:DOWN, _ref, :process, pid, _reason}, %State{} = state) do
+    new_state = State.deregister_listener(state, pid)
+
+    {:noreply, new_state}
   end
 end
