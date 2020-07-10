@@ -17,3 +17,5 @@ loop() ->
 				    loop()		%% recursion keeps server alive and listening %%
 
 	end.		
+
+% Server added
