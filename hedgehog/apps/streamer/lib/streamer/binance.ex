@@ -1,5 +1,6 @@
 defmodule Streamer.Binance do
   use WebSockex
+  alias Streamer.Binance.TradeEvent
   @stream_endpoint "wss://stream.binance.com:9443/ws/"
 
   def start_link(symbol, state) do
@@ -16,7 +17,7 @@ defmodule Streamer.Binance do
   end
 
   def handle_event(%{"e" => "trade"} = event, _state) do
-    trade_event = %Streamer.Binance.TradeEvent{
+    trade_event = %TradeEvent {
       :event_type => event["e"],
       :event_time => event["E"],
       :symbol => event["s"],
