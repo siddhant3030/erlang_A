@@ -1,6 +1,7 @@
 defmodule Streamer.Binance do
   use WebSockex
   alias Streamer.Binance.TradeEvent
+  require Logger
   @stream_endpoint "wss://stream.binance.com:9443/ws/"
 
   def start_link(symbol, state) do
@@ -29,7 +30,12 @@ defmodule Streamer.Binance do
       :trade_time => event["T"],
       :buyer_market_maker => event["m"]
     }
-
-    IO.inspect(trade_event, label: "Trade event received: ")
   end
+
+  Logger.debug(
+    "Trade event received " <>
+    "#{trade_event.symbol}@#{trade_event.price}"
+  )
+
+  Naive.send_event(trade_event)
 end
