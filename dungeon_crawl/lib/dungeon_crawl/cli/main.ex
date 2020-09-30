@@ -2,7 +2,7 @@ defmodule DungeonCrawl.CLI.Main do
   alias Mix.Shell.IO, as: Shell
 
   def start_game do
-     welcome_message()
+    welcome_message()
   end
 
   defp welcome_message do
