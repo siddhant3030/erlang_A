@@ -2,17 +2,9 @@ defmodule Naive do
   @moduledoc """
   Documentation for `Naive`.
   """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Naive.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def send_event(
+    %Streamer.Binance.TradeEvent{} = event
+  ) do
+    GenServer.cast(:trader, {:event, event})
   end
 end
