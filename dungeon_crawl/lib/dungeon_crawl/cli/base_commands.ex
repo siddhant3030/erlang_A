@@ -1,4 +1,4 @@
-defmodule DungeonCrawl.CLI.BaseConmmads do
+defmodule DungeonCrawl.CLI.BaseCommands do
   alias Mix.Shell.IO, as: Shell
 
   def display_options(options) do
