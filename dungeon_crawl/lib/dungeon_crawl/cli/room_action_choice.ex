@@ -1,6 +1,6 @@
 defmodule DungeonCrawl.CLI.RoomActionsChoice do
   alias Mix.Shell.IO, as: Shell
-  import DungeonCrawl.CLI.BaseCommands
+  alias DungeonCrawl.CLI.BaseCommands
 
   def start(room) do
     room_actions = room.actions
