@@ -21,4 +21,8 @@ defmodule IslandsEngine.Coordinate do
     _ -> true
     end
   end
+
+  def hit?(coordinate) do
+    in_island?(coordinate) && guessed?(coordinate)
+  end
 end
