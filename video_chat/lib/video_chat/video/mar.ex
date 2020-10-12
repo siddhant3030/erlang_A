@@ -39,21 +39,26 @@ defmodule StableMatching.GaleShapley do
 
     unless Enum.empty?(unengaged_men) do
       {male_map, female_map} =
-        Enum.reduce(unengaged_men, {male_map, female_map}, fn (man, {male_map, female_map}) ->
+        Enum.reduce(unengaged_men, {male_map, female_map}, fn man, {male_map, female_map} ->
           preferred_woman = Map.get(female_map, get_current_preferred_id(man))
+
           if accepts_proposal?(round, man.id, preferred_woman) do
-            man = man
+            man =
+              man
               |> engage(preferred_woman.id)
               |> add_to_already_proposed(preferred_woman.id)
+
             previously_engaged_man =
               Map.get(male_map, get_current_preferred_id(preferred_woman))
               |> unengage()
+
             preferred_woman = engage(preferred_woman, man.id)
 
             male_map =
               male_map
               |> Map.put(man.id, man)
               |> Map.put(previously_engaged_man.id, previously_engaged_man)
+
             female_map = Map.put(female_map, preferred_woman.id, preferred_woman)
             {male_map, female_map}
           else
@@ -62,6 +67,7 @@ defmodule StableMatching.GaleShapley do
             {male_map, female_map}
           end
         end)
+
       match_inner(round + 1, male_map, female_map)
     else
       return_matchings(male_map)
@@ -72,7 +78,7 @@ defmodule StableMatching.GaleShapley do
   # so we need to walk only male map to get all matchings
   defp return_matchings(male_map) do
     male_map
-    |> Map.values
+    |> Map.values()
     |> Enum.map(fn man -> {man.id, get_current_engagement(man)} end)
   end
 
@@ -83,7 +89,11 @@ defmodule StableMatching.GaleShapley do
   end
 
   # in first round woman replies "yes" only to the man she prefers the most
-  defp accepts_proposal?(_round = 1, man_id, _woman_preference = %Preference{prefers: [preferred_man_id | _]}) do
+  defp accepts_proposal?(
+         _round = 1,
+         man_id,
+         _woman_preference = %Preference{prefers: [preferred_man_id | _]}
+       ) do
     man_id == preferred_man_id
   end
 
@@ -120,8 +130,12 @@ defmodule StableMatching.GaleShapley do
       true
     else
       new_partner_preference_index = Enum.find_index(preference.prefers, partner_id)
-      current_partner_preference_index = Enum.find_index(preference.prefers,
-        get_current_engagement(preference))
+
+      current_partner_preference_index =
+        Enum.find_index(
+          preference.prefers,
+          get_current_engagement(preference)
+        )
 
       # if current partner is further in the `prefers` list, new partner will be preferred
       current_partner_preference_index > new_partner_preference_index

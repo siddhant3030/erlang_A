@@ -20,11 +20,11 @@ defmodule VideoChatWeb.Endpoint do
   plug VideoChatWeb.Router
 
   def introspect(conn, _opts) do
-    IO.puts """
+    IO.puts("""
     Verb: #{inspect(conn.method)}
     Host: #{inspect(conn.host)}
     Headers: #{inspect(conn.req_headers)}
-    """
+    """)
 
     conn
   end
