@@ -18,6 +18,8 @@ defmodule VideoChatWeb.Router do
 
     get "/", PageController, :index
     get "/", CallController, :index
+    get "/", UserController, :index
+    get "/", PageController, :show
   end
 
   # Other scopes may use custom stacks.
