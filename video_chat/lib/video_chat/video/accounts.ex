@@ -18,6 +18,8 @@ defmodule VideoChat.Video.Accounts do
   end
 
   def get_user_by(params) do
-    Enum.find(list_users(), fn map -> Enum.all?(params, fn {key, val} -> Map.get(map, key) == val end) end)
+    Enum.find(list_users(), fn map ->
+      Enum.all?(params, fn {key, val} -> Map.get(map, key) == val end)
+    end)
   end
 end
