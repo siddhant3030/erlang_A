@@ -1,3 +1,3 @@
-defmodule VideoChat.Video.User do
+defmodule VideoChat.Accounts.User do
   defstruct [:title, :content, :author]
 end

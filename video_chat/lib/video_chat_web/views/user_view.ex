@@ -1,11 +1,12 @@
 defmodule VideoChatWeb.UserView do
   use VideoChatWeb, :view
 
-  alias VideoChat.Video.Accounts
+  alias VideoChat.Accounts
+  alias VideoChat.Accounts.User
 
   def first_name(%Accounts.User{content: content}) do
     content
-    |> String.split(" , ")
+    |> String.split("")
     |> Enum.at(0)
   end
 end

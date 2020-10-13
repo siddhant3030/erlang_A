@@ -1,5 +1,6 @@
-defmodule VideoChat.Video.Accounts do
-  alias VideoChat.Video.User
+defmodule VideoChat.Accounts do
+
+  alias VideoChat.Accounts.User
 
   def list_users do
     [

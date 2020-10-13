@@ -1,7 +1,7 @@
 defmodule VideoChatWeb.UserController do
   use VideoChatWeb, :controller
 
-  alias VideoChat.Video.Accounts
+  alias VideoChat.Accounts
 
   def index(conn, _params) do
     users = Accounts.list_users()
