@@ -1,3 +1,11 @@
 defmodule VideoChat.Accounts.User do
-  defstruct [:title, :content, :author]
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "users" do
+    field :name, :string
+    field :username, :string
+
+    timestamps()
+  end
 end
