@@ -17,4 +17,10 @@ defmodule VideoChat.Accounts do
   def list_users do
     Repo.all(User)
   end
+
+  def create_user(attrs \\ %{}) do
+    %User{}
+    |> User.changeset(user)
+    |> Repo.insert()
+  end
 end
