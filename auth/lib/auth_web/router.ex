@@ -17,6 +17,7 @@ defmodule AuthWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/songs", SongController
   end
 
   # Other scopes may use custom stacks.
