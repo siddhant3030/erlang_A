@@ -15,7 +15,6 @@ defmodule AuthWeb.SongController do
   end
 
   def create(conn, %{"song" => song_params}) do
-    IO.inspect(song)
     case Playlists.create_song(song_params) do
       {:ok, song} ->
         conn
