@@ -42,6 +42,10 @@ defmodule AuthWeb do
     end
   end
 
+  defmacro lower(arg) do
+    quote do: fragment("lower(?)", unquote(arg))
+  end
+
   def router do
     quote do
       use Phoenix.Router
