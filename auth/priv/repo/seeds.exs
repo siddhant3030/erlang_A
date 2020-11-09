@@ -1,10 +1,10 @@
 alias Auth.Repo
 alias Auth.MusicDb.{Artist, Album, Track, Genre}
 
-jazz_genre = Repo.insert!(%Genre{ name: "jazz" })
-live_genre = Repo.insert!(%Genre{ name: "live" })
+jazz_genre = Repo.insert!(%Genre{name: "jazz"})
+live_genre = Repo.insert!(%Genre{name: "live"})
 
-Repo.insert! %Artist{
+Repo.insert!(%Artist{
   name: "Miles Davis",
   albums: [
     %Album{
@@ -70,9 +70,9 @@ Repo.insert! %Artist{
       ]
     }
   ]
-}
+})
 
-Repo.insert! %Artist{
+Repo.insert!(%Artist{
   name: "Bill Evans",
   albums: [
     %Album{
@@ -168,9 +168,9 @@ Repo.insert! %Artist{
       ]
     }
   ]
-}
+})
 
-Repo.insert! %Artist{
+Repo.insert!(%Artist{
   name: "Bobby Hutcherson",
   albums: [
     %Album{
@@ -200,4 +200,4 @@ Repo.insert! %Artist{
       ]
     }
   ]
-}
+})

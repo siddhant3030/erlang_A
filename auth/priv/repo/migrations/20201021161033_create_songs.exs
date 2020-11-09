@@ -9,6 +9,5 @@ defmodule Auth.Repo.Migrations.CreateSongs do
 
       timestamps()
     end
-
   end
 end

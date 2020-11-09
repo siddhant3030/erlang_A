@@ -7,5 +7,4 @@ defmodule Auth.MusicDb.Artist do
 
     has_many :albums, Auth.MusicDb.Album
   end
-
 end

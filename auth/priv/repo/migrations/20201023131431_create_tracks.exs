@@ -10,6 +10,7 @@ defmodule Auth.Repo.Migrations.CreateTracks do
       add :album_id, references(:albums, on_delete: :nothing)
       timestamps()
     end
+
     create index(:tracks, [:title])
     create index(:tracks, [:album_id])
   end

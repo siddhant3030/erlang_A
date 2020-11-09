@@ -8,5 +8,4 @@ defmodule Auth.MusicDb.Genre do
 
     many_to_many :albums, Album, join_through: "albums_genres"
   end
-
 end

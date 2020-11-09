@@ -11,5 +11,4 @@ defmodule Auth.MusicDb.Track do
 
     belongs_to :album, Album
   end
-
 end
