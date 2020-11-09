@@ -1,6 +1,6 @@
 defmodule Auth.Schema.TrackEmbed do
   import Ecto.Changeset
-  use Auth.Schema
+  use Ecto.Schema
 
   embedded_schema do
     field(:title, :string)
