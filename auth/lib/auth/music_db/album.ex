@@ -4,6 +4,7 @@ defmodule Auth.MusicDb.Album do
 
   schema "albums" do
     field :title
+    field :name, :map
     timestamps()
 
     belongs_to :artist, Artist

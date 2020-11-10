@@ -4,6 +4,7 @@ defmodule Auth.Repo.Migrations.CreateAlbums do
   def change do
     create table(:albums) do
       add :title, :string, null: false
+      add :name, :map
       add :artist_id, references(:artists, on_delete: :nothing)
       timestamps()
     end
