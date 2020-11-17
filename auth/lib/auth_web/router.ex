@@ -1,8 +1,9 @@
 defmodule AuthWeb.Router do
   use AuthWeb, :router
+  use Kaffy.Routes, scope: "/admin"
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery

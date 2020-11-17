@@ -7,6 +7,11 @@
 # General application configuration
 use Mix.Config
 
+config :kaffy,
+  otp_app: :auth,
+  ecto_repo: Auth.Repo,
+  router: AuthWeb.Router
+
 config :auth,
   ecto_repos: [Auth.Repo]
 

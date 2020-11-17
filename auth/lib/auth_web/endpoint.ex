@@ -10,6 +10,13 @@ defmodule AuthWeb.Endpoint do
     signing_salt: "TxpEUMEA"
   ]
 
+  plug Plug.Static,
+  at: "/kaffy",
+  from: :kaffy,
+  gzip: false,
+  only: ~w(assets)
+
+
   socket "/socket", AuthWeb.UserSocket,
     websocket: true,
     longpoll: false

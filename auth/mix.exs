@@ -46,7 +46,8 @@ defmodule Auth.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:comeonin, "~> 5.3"},
-      {:ex_doc, "~> 0.13"}
+      {:ex_doc, "~> 0.13"},
+      {:kaffy, "~> 0.9.0"}
     ]
   end
 
