@@ -12,6 +12,13 @@ config :kaffy,
   ecto_repo: Auth.Repo,
   router: AuthWeb.Router
 
+config :money,
+  # this allows you to do Money.new(100)
+  default_currency: :EUR,
+  # change the default thousands separator for Money.to_string
+  separator: ".",
+  delimiter: ","
+
 config :auth,
   ecto_repos: [Auth.Repo]
 

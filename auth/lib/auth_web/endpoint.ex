@@ -11,11 +11,10 @@ defmodule AuthWeb.Endpoint do
   ]
 
   plug Plug.Static,
-  at: "/kaffy",
-  from: :kaffy,
-  gzip: false,
-  only: ~w(assets)
-
+    at: "/kaffy",
+    from: :kaffy,
+    gzip: false,
+    only: ~w(assets)
 
   socket "/socket", AuthWeb.UserSocket,
     websocket: true,

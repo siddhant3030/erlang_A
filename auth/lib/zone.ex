@@ -2,14 +2,12 @@
 #   use HealthyEats.Schema
 #   import Ecto.Changeset
 
-
 #   @doc """
 #   """
 #   @valid_zone_types ["S", "C"]
 #   @valid_zone_types
 #   |> Enum.map(fn x -> "`#{x}`" end)
 #   |> Enum.intersperse(", ")
-
 
 #   schema "zone" do
 #     field(:name, :string)

@@ -47,7 +47,9 @@ defmodule Auth.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:comeonin, "~> 5.3"},
       {:ex_doc, "~> 0.13"},
-      {:kaffy, "~> 0.9.0"}
+      {:kaffy, "~> 0.9.0"},
+      {:money, "~> 1.8"},
+      {:ex_money, "~> 5.4"}
     ]
   end
 
