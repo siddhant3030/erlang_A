@@ -8,6 +8,10 @@ defmodule Auth.Playlists do
 
   alias Auth.Playlists.Song
 
+  def main(_) do
+    IO.puts("123")
+  end
+
   @doc """
   Returns the list of songs.
 
