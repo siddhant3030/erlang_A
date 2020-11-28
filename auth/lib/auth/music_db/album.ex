@@ -1,5 +1,6 @@
 defmodule Auth.MusicDb.Album do
   use Ecto.Schema
+  import Ecto.Changeset
   alias Auth.MusicDb.{Artist, Track, Genre}
 
   schema "albums" do
@@ -13,7 +14,7 @@ defmodule Auth.MusicDb.Album do
   end
 
   def changeset(album, params) do
-    artist
+    album
     |> cast(params, [:title, :name])
   end
 end
