@@ -14,9 +14,9 @@ defmodule Dog do
   end
 
   defimpl Animal, for: Dog do
-    def warn(_), do: ("growl!")
-    def speak(_), do: ("gsasassarowl!")
-    def greet(_), do: ("hello")
+    def warn(_), do: "growl!"
+    def speak(_), do: "gsasassarowl!"
+    def greet(_), do: "hello"
   end
 end
 

@@ -9,7 +9,6 @@ defmodule Auth.MusicDb.Artist do
     has_many :albums, Auth.MusicDb.Album, on_replace: :nilify
   end
 
-
   def changeset(artist, params) do
     artist
     |> cast(params, [:name])
@@ -31,7 +30,6 @@ defmodule Auth.MusicDb.Artist do
   #   updated_at: nil
   # }
 end
-
 
 # artist = Repo.get_by(Artist, name: "ritviz")
 # [debug] QUERY OK source="artists" db=3.0ms idle=1134.0ms
@@ -74,8 +72,6 @@ end
 #    updated_at: ~N[2020-11-28 19:01:19]
 #  }}
 
-
-
 # iex(41)> artist = Repo.one(from a in Artist, where: a.name == "ritviz", preload: :albums)
 # [debug] QUERY OK source="artists" db=2.2ms queue=3.0ms idle=1740.2ms
 # SELECT a0."id", a0."name", a0."inserted_at", a0."updated_at" FROM "artists" AS a0 WHERE (a0."name" = 'ritviz') []
@@ -114,8 +110,6 @@ end
 #   name: "ritviz",
 #   updated_at: ~N[2020-11-28 18:58:41]
 # }
-
-
 
 # iex(45)> changeset = Repo.get_by(Artist, name: "ritviz")|> Repo.preload(:albums) |> change |> put_assoc(:albums, [%Album{title: "raahi"} | artist.albums])
 # [debug] QUERY OK source="artists" db=3.1ms idle=1292.0ms

@@ -51,7 +51,6 @@
 #   def list_stock_location(), do: Repo.all(StockLocation)
 # end
 
-
 # defmodule HealthyEats.Admin.Inventory.InventoryUnitAdmin do
 #   @moduledoc """
 #   Inventory Admin Module
