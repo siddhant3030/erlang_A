@@ -6,7 +6,7 @@ defmodule Auth.MusicDb.Artist do
     field :name, :string
     timestamps()
 
-    has_many :albums, Auth.MusicDb.Album
+    has_many :albums, Auth.MusicDb.Album, on_replace: :nilify
   end
 
 
