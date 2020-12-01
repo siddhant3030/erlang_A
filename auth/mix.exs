@@ -11,7 +11,8 @@ defmodule Auth.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
-      escript: [main_module: Roshambo]
+      escript: [main_module: Roshambo],
+      preferred_cli_env: [muzak: :test]
     ]
   end
 
