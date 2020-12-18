@@ -6,15 +6,19 @@ defmodule Fizbuzz do
   defp _downto(current, result) do
     next_answer =
       cond do
-      rem(current, 3) == 0 and rem(current, 5) == 0 ->
-      "FizzBuzz"
-      rem(current, 3) == 0 ->
-      "Fizz"
-      rem(current, 5) == 0 ->
-      "Buzz"
-      true ->
-         current
+        rem(current, 3) == 0 and rem(current, 5) == 0 ->
+          "FizzBuzz"
+
+        rem(current, 3) == 0 ->
+          "Fizz"
+
+        rem(current, 5) == 0 ->
+          "Buzz"
+
+        true ->
+          current
       end
-  _downto(current-1, [ next_answer | result ])
+
+    _downto(current - 1, [next_answer | result])
   end
 end

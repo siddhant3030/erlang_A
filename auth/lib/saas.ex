@@ -44,7 +44,6 @@
 # [1, 2]
 # iex(4)>
 
-
 # ist = Enum.to_list 1..5
 # [1, 2, 3, 4, 5]
 # iex(3)> Enum.take(list, 2)
