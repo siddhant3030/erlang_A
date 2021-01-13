@@ -17,6 +17,7 @@ defmodule BlogPhoenixWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    post "/comment", PostController, :add_comment
     resources "/posts", PostController
   end
 
