@@ -44,7 +44,9 @@ defmodule BlogPhoenix.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:kaffy, path: "/Users/siddhant/Documents/twingle_light"},
+      {:mogrify, "~> 0.7.4"}
     ]
   end
 
