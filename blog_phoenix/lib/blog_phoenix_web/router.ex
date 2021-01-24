@@ -16,6 +16,10 @@ defmodule BlogPhoenixWeb.Router do
   scope "/", BlogPhoenixWeb do
     pipe_through :browser
 
+    resources "/uploads", UploadController, only: [:index, :new, :create, :show] do
+      get "/thumbnail", UploadController, :thumbnail, as: "thumbnail"
+    end
+
     get "/", PageController, :index
     post "/comment", PostController, :add_comment
     resources "/posts", PostController
