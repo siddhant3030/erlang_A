@@ -8,7 +8,7 @@ defmodule BlogPhoenixWeb.UploadController do
   def show(conn, %{"id" => id}) do
     upload = Documents.get_upload!(id)
     local_path = Upload.local_path(upload.filename)
-    send_download conn, {:file, local_path}, filename: upload.filename
+    send_download(conn, {:file, local_path}, filename: upload.filename)
   end
 
   def index(conn, _params) do
@@ -29,14 +29,13 @@ defmodule BlogPhoenixWeb.UploadController do
   #     path: "/tmp/plug-1591/multipart-1591889555-99850314281274-3"
   #   }
   # }
-  def create(conn, %{"upload" => %Plug.Upload{}=upload}) do
+  def create(conn, %{"upload" => %Plug.Upload{} = upload}) do
     case Documents.create_upload(upload) do
-
-      {:ok, upload}->
+      {:ok, upload} ->
         put_flash(conn, :info, "file uploaded correctly")
         redirect(conn, to: Routes.upload_path(conn, :index))
 
-      {:error, reason}->
+      {:error, reason} ->
         put_flash(conn, :error, "error upload file: #{inspect(reason)}")
         render(conn, "new.html")
     end
@@ -47,10 +46,8 @@ defmodule BlogPhoenixWeb.UploadController do
     thumb_path = Upload.thumbnail_path(upload.filename)
     IO.inspect(thumb_path)
 
-
     conn
     |> put_resp_content_type("image/jpeg")
     |> send_file(200, thumb_path)
   end
-
 end

@@ -8,7 +8,9 @@ defmodule BlogPhoenix.UploadAdmin do
   end
 
   def update(conn, changeset) do
-    {:ok, res_upload} = Documents.update_upload(conn.params["id"], conn.params["upload"]["filename"])
+    {:ok, res_upload} =
+      Documents.update_upload(conn.params["id"], conn.params["upload"]["filename"])
+
     {:ok, res_upload}
   end
 
@@ -24,14 +26,13 @@ defmodule BlogPhoenix.UploadAdmin do
       filename: nil,
       content_type: nil,
       size: nil,
-      inserted_at: nil,
+      inserted_at: nil
     ]
   end
 
   def form_fields(_) do
     [
-      filename: %{type: :file},
+      filename: %{type: :file}
     ]
   end
-
 end

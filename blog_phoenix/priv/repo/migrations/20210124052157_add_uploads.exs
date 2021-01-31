@@ -11,6 +11,7 @@ defmodule BlogPhoenix.Repo.Migrations.AddUploads do
 
       timestamps()
     end
+
     create index(:uploads, [:hash])
   end
 end

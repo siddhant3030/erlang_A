@@ -19,15 +19,16 @@ defmodule BlogPhoenix.Documents.Upload do
     upload
     |> cast(attrs, [:filename, :size, :content_type, :hash, :thumbnail?])
     |> validate_required([:filename, :size, :content_type, :hash])
-    |> validate_number(:size, greater_than: 0) #doesn't allow empty files
+    # doesn't allow empty files
+    |> validate_number(:size, greater_than: 0)
     |> validate_length(:hash, is: 64)
   end
 
   def sha256(chunks_enum) do
     chunks_enum
     |> Enum.reduce(
-        :crypto.hash_init(:sha256),
-        &(:crypto.hash_update(&2, &1))
+      :crypto.hash_init(:sha256),
+      &:crypto.hash_update(&2, &1)
     )
     |> :crypto.hash_final()
     |> Base.encode16()
@@ -41,6 +42,7 @@ defmodule BlogPhoenix.Documents.Upload do
 
   def thumbnail_path(filename) do
     filename_noext = Path.rootname(filename)
+
     [@upload_directory, "thumb-#{filename_noext}.jpg"]
     |> Path.join()
   end
@@ -73,14 +75,11 @@ defmodule BlogPhoenix.Documents.Upload do
   def create_thumbnail(_, _), do: {:ok, :nothing}
 
   def pdf_thumbnail(pdf_path, thumb_path) do
-    args = ["-density", "300", "-resize",
-            "300x300","#{pdf_path}[0]",
-            thumb_path]
+    args = ["-density", "300", "-resize", "300x300", "#{pdf_path}[0]", thumb_path]
 
     case System.cmd("convert", args, stderr_to_stdout: true) do
       {_, 0} -> {:ok, thumb_path}
       {reason, _} -> {:error, reason}
     end
   end
-
 end
