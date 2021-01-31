@@ -10,10 +10,16 @@ env:
   MIX_ENV: test
 
 jobs:
-  deps:
-    name: Dependencies
+  deps: [...]
+  
+  static_code_analysis: [...]
+  
+  unit_tests:
+    name: Unit Tests
+    needs: deps
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         elixir: [1.11]
         otp: [23.2]
@@ -29,9 +35,5 @@ jobs:
           elixir-version: ${{ matrix.elixir }}
           otp-version: ${{ matrix.otp }}
 
-      - name: Install Dependencies
-        run: |
-          mix local.rebar --force
-          mix local.hex --force
-          mix deps.get
-          mix deps.compile
+      - name: Run test
+        run: mix test --slowest 10
