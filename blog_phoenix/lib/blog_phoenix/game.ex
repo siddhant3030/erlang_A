@@ -8,4 +8,18 @@ defmodule BlogPhoenix.Game do
     players: {Player.t(), Player.t()} | nil,
     winning_player: Player.t() | nil
   }
+
+  def status_message(game) do
+    case game.status do
+      :not_started ->
+        "Waiting for players to join..."
+
+      :in_progress ->
+        {player1, player2} = game.players
+        "Game on: #{player1.username} vs #{player2.username}."
+
+      :finished ->
+        "Player #{game.winning_player.username} wins!"
+    end
+  end
 end
