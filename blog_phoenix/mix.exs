@@ -54,7 +54,8 @@ defmodule BlogPhoenix.MixProject do
       {:ex_aws_s3, "~> 2.0"},
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
-      {:typed_struct, "~> 0.2.1"}
+      {:typed_struct, "~> 0.2.1"},
+      {:ex_doc, "~> 0.23", only: :dev, runtime: false}
     ]
   end
 
