@@ -40,14 +40,14 @@ defmodule Auth.MusicDb.Album do
 end
 
 
-iex(9)> query = from t in "tracks", join: a in "albums", on: t.album_id == a.id, where: t.duration > 900, select: [t.id, t.title, a.title]
-#Ecto.Query<from t0 in "tracks", join: a1 in "albums", on: t0.album_id == a1.id,
- where: t0.duration > 900, select: [t0.id, t0.title, a1.title]>
-iex(10)> Repo.all(query)
-[debug] QUERY OK source="tracks" db=11.1ms queue=4.3ms idle=998.9ms
-SELECT t0."id", t0."title", a1."title" FROM "tracks" AS t0 INNER JOIN "albums" AS a1 ON t0."album_id" = a1."id" WHERE (t0."duration" > 900) []
-[
-  [10, "No Blues", "Cookin' At The Plugged Nickel"],
-  [6, "If I Were A Bell", "Cookin' At The Plugged Nickel"]
-]
-iex(11)>
+# iex(9)> query = from t in "tracks", join: a in "albums", on: t.album_id == a.id, where: t.duration > 900, select: [t.id, t.title, a.title]
+# #Ecto.Query<from t0 in "tracks", join: a1 in "albums", on: t0.album_id == a1.id,
+#  where: t0.duration > 900, select: [t0.id, t0.title, a1.title]>
+# iex(10)> Repo.all(query)
+# [debug] QUERY OK source="tracks" db=11.1ms queue=4.3ms idle=998.9ms
+# SELECT t0."id", t0."title", a1."title" FROM "tracks" AS t0 INNER JOIN "albums" AS a1 ON t0."album_id" = a1."id" WHERE (t0."duration" > 900) []
+# [
+#   [10, "No Blues", "Cookin' At The Plugged Nickel"],
+#   [6, "If I Were A Bell", "Cookin' At The Plugged Nickel"]
+# ]
+# iex(11)>
