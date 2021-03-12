@@ -2,7 +2,7 @@ defmodule HealthyEats.Artists do
   import Ecto.Query, warn: false
   alias Auth.Repo
 
-  alias Auth.Playlists.Song
+  alias Auth.MusicDb.Artist
 
 
   def main(_) do
@@ -52,7 +52,7 @@ defmodule HealthyEats.Artists do
   """
   def create_artist(attrs \\ %{}) do
     %Artist{}
-    |> Song.changeset(attrs)
+    |> Artist.changeset(attrs)
     |> Repo.insert()
   end
 
@@ -68,9 +68,9 @@ defmodule HealthyEats.Artists do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_artist(%Artist{} = song, attrs) do
-    song
-    |> Song.changeset(attrs)
+  def update_artist(%Artist{} = artist, attrs) do
+    artist
+    |> Artist.changeset(attrs)
     |> Repo.update()
   end
 
@@ -86,20 +86,7 @@ defmodule HealthyEats.Artists do
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_artist(%Artist{} = song) do
-    Repo.delete(song)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking song changes.
-
-  ## Examples
-
-      iex> change_song(song)
-      %Ecto.Changeset{data: %Song{}}
-
-  """
-  def change_aritst(%Aritst{} = artist, attrs \\ %{}) do
-    Artist.changeset(song, attrs)
+  def delete_artist(%Artist{} = artist) do
+    Repo.delete(artist)
   end
 end
