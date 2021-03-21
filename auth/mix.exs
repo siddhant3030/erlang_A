@@ -51,7 +51,8 @@ defmodule Auth.MixProject do
       {:ex_doc, "~> 0.13"},
       {:kaffy, "~> 0.9.0"},
       {:nanoid, "~> 2.0.4"},
-      {:muzak, "~> 1.0"}
+      {:muzak, "~> 1.0"},
+      {:nx, "~> 0.1.0-dev", github: "elixir-nx/nx", branch: "main", sparse: "nx"}
     ]
   end
 
