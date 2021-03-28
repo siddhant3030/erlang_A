@@ -22,5 +22,5 @@ defmodule Auth.MusicDb.Genre do
   #   title: nil,
   #   tracks: #Ecto.Association.NotLoaded<association :tracks is not loaded>,
   #   updated_at: nil
-  # }
+  #
 end

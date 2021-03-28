@@ -1,4 +1,5 @@
 %{
+  "bodyguard": {:hex, :bodyguard, "2.4.1", "223df8fa7ac6bd9acd959054aebc386738d3d458fbc02703dd3df341467e3ff6", [:mix], [{:plug, "~> 1.0", [hex: :plug, repo: "hexpm", optional: false]}], "hexpm", "8f570352941d4e43c0f795e4a27c58cb252ee9acdfae6ea16fcd17d12df995f7"},
   "cldr_utils": {:hex, :cldr_utils, "2.14.0", "edcef8dd2654b93d84a90087f3536ffabf9c9d82b34ff82bc9ca54c0668b3a4a", [:mix], [{:castore, "~> 0.1", [hex: :castore, repo: "hexpm", optional: true]}, {:certifi, "~> 2.5", [hex: :certifi, repo: "hexpm", optional: true]}, {:decimal, "~> 1.6 or ~> 2.0", [hex: :decimal, repo: "hexpm", optional: false]}], "hexpm", "6903356ff6988342a29b90637eece4ca98a4ed2b9759c22233d3474ade57645a"},
   "comeonin": {:hex, :comeonin, "5.3.1", "7fe612b739c78c9c1a75186ef2d322ce4d25032d119823269d0aa1e2f1e20025", [:mix], [], "hexpm", "d6222483060c17f0977fad1b7401ef0c5863c985a64352755f366aee3799c245"},
   "connection": {:hex, :connection, "1.0.4", "a1cae72211f0eef17705aaededacac3eb30e6625b04a6117c1b2db6ace7d5976", [:mix], [], "hexpm", "4a0850c9be22a43af9920a71ab17c051f5f7d45c209e40269a1938832510e4d9"},
