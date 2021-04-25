@@ -8,6 +8,16 @@ defmodule Auth.Accounts do
 
   alias Auth.Accounts.User
 
+  @topic inspect(__MODULE__)
+
+  def subscribe do
+    Phoenix.PubSub.subscribe(Auth.PubSub, @topic)
+  end
+
+  def subscribe(user_id) do
+    Phoenix.PubSub.subscribe(Auth.PubSub, @topic <> "#{user_id}")
+  end
+
   @doc """
   Returns the list of users.
 
@@ -53,6 +63,7 @@ defmodule Auth.Accounts do
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()
+    |> notify_subscribers([:user, :created])
   end
 
   @doc """
@@ -101,4 +112,11 @@ defmodule Auth.Accounts do
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
   end
+
+  defp notify_subscribers({:ok, result}, event) do
+    Phoenix.PubSub.broadcast(Auth.PubSub, @topic, {__MODULE__, event, result})
+    Phoenix.PubSub.broadcast(Auth.PubSub, @topic <> "#{result.id}", {__MODULE__, event, result})
+  end
+
+  defp notify_subscribers({:error, reason}), do: {:error, reason}
 end

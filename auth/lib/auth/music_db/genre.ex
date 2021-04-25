@@ -8,7 +8,8 @@ defmodule Auth.MusicDb.Genre do
 
     many_to_many :albums, Album, join_through: "albums_genres"
   end
-   # changeset = change(%Artist{name: "shivani"})
+
+  # changeset = change(%Artist{name: "shivani"})
 
   # new_album = Ecto.build_assoc(artist, :albums)
   # %Auth.MusicDb.Album{

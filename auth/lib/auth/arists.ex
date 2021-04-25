@@ -4,7 +4,6 @@ defmodule HealthyEats.Artists do
 
   alias Auth.MusicDb.Artist
 
-
   def main(_) do
     IO.puts("123")
   end

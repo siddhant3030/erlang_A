@@ -1,9 +1,9 @@
-defmodule Auth.Macro do
+defmodule Auth.MacroName do
+  defmacro double(x) do
+    quote do
+      unquote(x) + unquote(x)
+    end
 
-  def M do
-    quote do:
-      def add(x + y) do
-        x + y
-      end
+    IO.inspect(x, label: "one")
   end
 end

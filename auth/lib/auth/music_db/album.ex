@@ -39,7 +39,6 @@ defmodule Auth.MusicDb.Album do
   end
 end
 
-
 # iex(9)> query = from t in "tracks", join: a in "albums", on: t.album_id == a.id, where: t.duration > 900, select: [t.id, t.title, a.title]
 # #Ecto.Query<from t0 in "tracks", join: a1 in "albums", on: t0.album_id == a1.id,
 #  where: t0.duration > 900, select: [t0.id, t0.title, a1.title]>

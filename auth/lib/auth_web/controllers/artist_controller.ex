@@ -3,6 +3,5 @@ defmodule HealthyEats.ArtistController do
   alias Auth.Repo
 
   def create(conn, %{"artist" => artist_params}) do
-
   end
 end
