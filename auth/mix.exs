@@ -50,10 +50,7 @@ defmodule Auth.MixProject do
       {:comeonin, "~> 5.3"},
       {:ex_doc, "~> 0.13"},
       {:kaffy, "~> 0.9.0"},
-      {:nanoid, "~> 2.0.4"},
-      {:muzak, "~> 1.0"},
-      {:bodyguard, "~> 2.4"},
-      {:phoenix_postgres_pub_sub, "~> 0.1.2"}
+      {:nanoid, "~> 2.0.4"}
     ]
   end
 
