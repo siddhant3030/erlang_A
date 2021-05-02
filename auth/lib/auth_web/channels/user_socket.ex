@@ -2,7 +2,9 @@ defmodule AuthWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "room:*", AuthWeb.RoomChannel
+  # channel "notification", AuthWeb.NotificationChannel
+  # channel "ping", AuthWeb.PingChannel
+  channel "room:lobby", HelloWeb.RoomChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
