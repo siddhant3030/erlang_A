@@ -4,7 +4,7 @@ defmodule AuthWeb.UserSocket do
   ## Channels
   # channel "notification", AuthWeb.NotificationChannel
   # channel "ping", AuthWeb.PingChannel
-  channel "room", AuthWeb.RoomChannel
+  channel "ping", AuthWeb.PingChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
