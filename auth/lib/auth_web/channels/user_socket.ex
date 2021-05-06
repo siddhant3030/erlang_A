@@ -1,10 +1,12 @@
 defmodule AuthWeb.UserSocket do
   use Phoenix.Socket
+  require Logger
 
   ## Channels
   # channel "notification", AuthWeb.NotificationChannel
   # channel "ping", AuthWeb.PingChannel
   channel "ping", AuthWeb.PingChannel
+
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
@@ -18,10 +20,19 @@ defmodule AuthWeb.UserSocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   @impl true
-  def connect(_params, socket, _connect_info) do
-    {:ok, socket}
+  def connect(%{"token" => token}, socket) do
+    case verify(socket, connect) do
+      {:ok, user_id} ->
+        socket = assign(socket, :user_id, user_id) ->
+          {:ok, socket}
+        {:error, err} ->
+          Logger.error("#{__MODULE__} connect error #{inspect(err)}")
+          :error
+    end
   end
 
+  @one_day 86400
+   defp verify(socket, token), do: Phoenix.Token.Verify(socket, "salt identifier", token, max_age: @one_day)
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #
   #     def id(socket), do: "user_socket:#{socket.assigns.user_id}"
