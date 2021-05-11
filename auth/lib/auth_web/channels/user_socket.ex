@@ -1,5 +1,6 @@
 defmodule AuthWeb.UserSocket do
   use Phoenix.Socket
+  alias Phoenix.Token
   require Logger
 
   ## Channels
@@ -32,7 +33,7 @@ defmodule AuthWeb.UserSocket do
   end
 
   @one_day 86400
-   defp verify(socket, token), do: Phoenix.Token.Verify(socket, "salt identifier", token, max_age: @one_day)
+  defp verify(socket, token), do: Verify(socket, "salt identifier", token, max_age: @one_day)
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #
   #     def id(socket), do: "user_socket:#{socket.assigns.user_id}"
