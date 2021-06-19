@@ -6,7 +6,7 @@ defmodule AuthWeb.UserSocket do
   ## Channels
   # channel "notification", AuthWeb.NotificationChannel
   # channel "ping", AuthWeb.PingChannel
-  channel "ping", AuthWeb.PingChannel
+  # channel "ping", AuthWeb.PingChannel
 
 
   # Socket params are passed from the client and can
@@ -20,20 +20,20 @@ defmodule AuthWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  @impl true
-  def connect(%{"token" => token}, socket) do
-    case verify(socket, connect) do
-      {:ok, user_id} ->
-        socket = assign(socket, :user_id, user_id) ->
-          {:ok, socket}
-        {:error, err} ->
-          Logger.error("#{__MODULE__} connect error #{inspect(err)}")
-          :error
-    end
-  end
+  # @impl true
+  # def connect(%{"token" => token}, socket) do
+  #   case verify(socket, connect) do
+  #     {:ok, user_id} ->
+  #       socket = assign(socket, :user_id, user_id) ->
+  #         {:ok, socket}
+  #       {:error, err} ->
+  #         Logger.error("#{__MODULE__} connect error #{inspect(err)}")
+  #         :error
+  #   end
+  # end
 
-  @one_day 86400
-  defp verify(socket, token), do: Verify(socket, "salt identifier", token, max_age: @one_day)
+  # @one_day 86400
+  # defp verify(socket, token), do: Verify(socket, "salt identifier", token, max_age: @one_day)
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #
   #     def id(socket), do: "user_socket:#{socket.assigns.user_id}"
