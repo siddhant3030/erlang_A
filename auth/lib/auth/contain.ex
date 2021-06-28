@@ -21,4 +21,18 @@ defmodule Y do
       end
     collect_matches(rest, index_map, matches, index + 1)
   end
+
+  def list_len(list) do
+    accumulator = 0
+
+    do_list_len(accumulator, list)
+  end
+
+  defp do_list_len(accumulator, []) do
+    accumulator
+  end
+
+  defp do_list_len(accumulator, [_ | tail]) do
+    do_list_len(accumulator + 1, tail)
+  end
 end
